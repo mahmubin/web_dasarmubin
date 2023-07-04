@@ -60,6 +60,7 @@ require "functions.php";
     
 
     if (isset($_POST["simpan_dokter"])) {
+
         $nama_dokter = $_POST["nama_dokter"];
         $id_spesialis = $_POST["spesialis"];
         if($nama_dokter == ""){
@@ -67,21 +68,24 @@ require "functions.php";
         }elseif($id_spesialis == ""){
             echo "id spesialis masi kosong";
     } else {
-$simpan = mysqli_query(
-    koneksi(),
-    "INSERT INTO dokter VALUES(null,
-    '$nama_dokter'
-    '$id_spesialis
-    '$tanggal',
-    '$tanggal',)"
-);
-if($simpan) {
-    echo"
-    <script>
-    alert('simpan dokter berhasil!');
-</script>
-";
-}
+            $simpan = mysqli_query(
+                koneksi(),
+                "INSERT INTO dokter VALUES(null,
+                '$nama_dokter',
+                '$id_spesialis',
+                '$tanggal',
+                '$tanggal')"
+            );
+            if($simpan) {
+                echo"
+                <script>
+                alert('simpan dokter berhasil!');
+                location='dokter.php';
+            </script>
+            ";
+            }else {
+                echo 'gagal';
+            }
     }
 }
     ?>
